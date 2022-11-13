@@ -1,0 +1,129 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+@use '../src/app/commons/styles/colors.scss';
+@use '../src/app/commons/styles/my-theme.scss';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$challenge-primary: mat.define-palette(my-theme.$my-primary-color);
+$challenge-accent: mat.define-palette(my-theme.$my-accent-color);
+
+// The warn palette is optional (defaults to red).
+$challenge-warn: mat.define-palette(my-theme.$my-warn-color);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$challenge-theme: mat.define-light-theme((
+  color: (
+    primary: $challenge-primary,
+    accent: $challenge-accent,
+    warn: $challenge-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($challenge-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; padding: 0px;}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.btn-large{
+  width: 100%;
+	height: 60px;
+	font-family: 'Inter';
+}
+
+.title-page{
+  color:colors.$primary-color;
+  font-weight: 500;
+  font-size: 25px;
+}
+
+.container{
+  padding: 0px !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline
+ {
+	  color: colors.$border-input;
+ }
+
+ .mat-form-field-suffix .mat-icon {
+   color:  colors.$color-gray
+ }
+
+.mat-form-field-appearance-outline .mat-form-field-label{
+  color:colors.$color-gray
+}
+
+.mat-form-field {
+  width: -webkit-fill-available;
+  color: colors.$text-color-input;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+/*.mat-form-field-wrapper{
+  padding-bottom:0.7em;
+}*/
+
+input:focus,
+textarea:focus,
+select:focus {
+	outline: none;
+}
+
+
+//Spinner
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  border-top-color: #000000;
+  animation: spinner .8s linear infinite;
+}
+
+
+//Scroll 
+
+  ::-webkit-scrollbar { width: 5px; height: 4px;}
+  ::-webkit-scrollbar-button { width: 0px; height: 0px;}
+  ::-webkit-scrollbar-thumb { background: transparent; border: 0px none #fff; border-radius: 4px;}
+  ::-webkit-scrollbar-thumb:hover {  background: #5e5e5e54 !important; opacity: 0.3;}
+  ::-webkit-scrollbar-track {background: transparent;border: 0px solid #aaa; border-radius: 5px;}
+  ::-webkit-scrollbar-track:hover { background: #e4e4e4;}
+  ::-webkit-scrollbar-track:active { background: #d2d2d2;}
+  ::-webkit-scrollbar-corner { background: transparent;}
+  
+.border-bt{
+  border-bottom: 1px solid colors.$border;
+}
