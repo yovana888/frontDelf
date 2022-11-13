@@ -5,7 +5,6 @@ import { FormSharedModule } from '../shared/form-shared.module';
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatListModule } from "@angular/material/list";
-import { LoaderComponent } from '../components/loader/loader.component';
 
 
 @NgModule({
@@ -18,8 +17,7 @@ import { LoaderComponent } from '../components/loader/loader.component';
             ],
     exports: [LayoutComponent],
     declarations: [
-    LayoutComponent,
-    LoaderComponent
+    LayoutComponent
   ],
     providers: [],
 })

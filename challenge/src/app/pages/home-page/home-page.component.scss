@@ -1,6 +1,45 @@
-.mat-column-id {
-    flex: 0 0 10%;
-}
-.mat-column-name {
-    flex: 0 0 50%;
+@use '../../commons/styles/colors.scss';
+
+section {
+	padding: 30px;
+	.mat-table {
+		background: #fff;
+		border: 2px solid #fff;
+		width: 100%;
+	}
+
+	.mat-header-cell {
+		padding: 0.5em;
+		border-right: 1px solid transparent;
+		color: colors.$primary-color;
+		font-weight: 500;
+		font-size: 15px;
+	}
+
+	.mat-row .mat-cell {
+		border-bottom: 1px solid transparent;
+		border-top: 1px solid transparent;
+		border-right: 1px solid transparent;
+		cursor: pointer;
+		padding: 0.5em;
+	}
+
+	.center {
+		text-align: center;
+	}
+
+	.container_notFound,
+	.container_loader {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		color: gray;
+		gap: 10px;
+		margin-top: 12%;
+		img {
+			width: 80px;
+			height: auto;
+		}
+	}
 }

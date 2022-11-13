@@ -1,0 +1,43 @@
+@use '../../styles/colors.scss';
+section {
+	display: grid;
+	grid-template-columns: 0.5fr 2.5fr 1fr;
+	grid-template-rows: 52px;
+	gap: 3rem;
+    margin-bottom: 40px;
+	img {
+		width: auto;
+		height: 50px;
+		margin-top: 6px;
+	}
+	.mat-form-field{
+		font-size: 13px;
+		margin-left: 10px;
+	}
+
+	.action__container{
+		display:flex;
+		gap: 10px;
+		align-items: center;
+	}
+}
+
+@media screen and (max-width: 1020px) {
+	section{
+		grid-template-columns: 3fr 0.3fr;
+		#logo{
+			display: none;
+		}
+	}
+}
+
+@media screen and (max-width: 730px) {
+	section{
+        grid-template-columns: 1fr;
+		gap: 1rem;
+		.mat-form-field{
+			margin-left: 0px;
+		}
+	}
+}
+

@@ -1,34 +1,40 @@
-<div class="mat-elevation-z8">
-	<table mat-table [dataSource]="listProducts">
-		<!-- Position Column -->
-		<ng-container matColumnDef="id">
-			<th mat-header-cell *matHeaderCellDef width="20%">No.</th>
-			<td mat-cell *matCellDef="let element">{{ element.id }}</td>
-		</ng-container>
+<section>
+	<app-header-filter (search)="onSearch($event)" (reload)="onReload()"></app-header-filter>
+	<div class="container_notFound" *ngIf="showNotFoundResult">
+		<img src="assets/img/no-results.png" alt="not-found" />
+		<p>No results found</p>
+	</div>
 
-		<!-- Name Column -->
-		<ng-container matColumnDef="name">
-			<th mat-header-cell *matHeaderCellDef width="60%">Name</th>
-			<td mat-cell *matCellDef="let element">{{ element.name }}</td>
-		</ng-container>
+	<div class="mat-elevation-z8" *ngIf="!showNotFoundResult">
+		<table mat-table [dataSource]="listProducts" matSort (matSortChange)="sortTable($event)">
+			<ng-container matColumnDef="id">
+				<th mat-header-cell class="center" *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id">
+					Id Product
+				</th>
+				<td mat-cell *matCellDef="let element" class="center">{{ element.id }}</td>
+			</ng-container>
 
-		<!-- Weight Column -->
-		<ng-container matColumnDef="slug">
-			<th mat-header-cell *matHeaderCellDef width="90%">Slug</th>
-			<td mat-cell *matCellDef="let element">{{ element.slug }}</td>
-		</ng-container>
+			<ng-container matColumnDef="name">
+				<th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">Name</th>
+				<td mat-cell *matCellDef="let element">{{ element.name }}</td>
+			</ng-container>
 
-		<tr mat-header-row *matHeaderRowDef="columndefs"></tr>
-		<tr mat-row *matRowDef="let row; columns: columndefs"></tr>
-	</table>
+			<ng-container matColumnDef="slug">
+				<th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by slug">Slug</th>
+				<td mat-cell *matCellDef="let element">{{ element.slug }}</td>
+			</ng-container>
 
-	<mat-paginator
-		#paginator
-		[length]="pageLength"
-		[pageSize]="pageSize"
-		[pageSizeOptions]="[5, 10, 20]"
-		(page)="pageEvent = $event; onChangePaginate($event)"
-		[class.hide]="!listProducts.length"
-	>
-	</mat-paginator>
-</div>
+			<tr mat-header-row *matHeaderRowDef="columndefs"></tr>
+			<tr mat-row *matRowDef="let row; columns: columndefs"></tr>
+		</table>
+
+		<mat-paginator
+			#paginator
+			[length]="pageLength"
+			[pageSize]="pageSize"
+			[pageSizeOptions]="[5, 10, 20]"
+			(page)="pageEvent = $event; onChangePaginate($event)"
+		>
+		</mat-paginator>
+	</div>
+</section>

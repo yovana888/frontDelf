@@ -1,0 +1,16 @@
+<section>
+	<img src="assets/img/logo.png" alt="logo" id="logo" />
+	<mat-form-field appearance="outline">
+		<mat-label>Search</mat-label>
+		<input matInput type="text" autocomplete="off" [formControl]="valueSearch" />
+		<button *ngIf="valueSearch.value" matSuffix mat-icon-button aria-label="Clear" (click)="cleanSearch()">
+			<mat-icon>close</mat-icon>
+		</button>
+	</mat-form-field>
+	<div class="action__container">
+		<button mat-flat-button color="primary">
+			New Product
+			<mat-icon> add </mat-icon>
+		</button>
+	</div>
+</section>
